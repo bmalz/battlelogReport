@@ -1,5 +1,6 @@
 var config = require('./config').Configuration;
 var weapon = require('./object/weapon');
+var locallog = require('./locallog');
 var request = require('request');
 
 module.exports = {
@@ -17,6 +18,7 @@ module.exports = {
                         weaponStats.push(w);
                     }, this);
 
+                    locallog.saveObject(JSON.stringify(weaponStats), config.localWeaponFile);
                     callback(weaponStats);
                 } else {
                     console.log(err);
