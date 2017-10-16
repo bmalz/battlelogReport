@@ -1,4 +1,6 @@
 this.Configuration = {
     userId: '392794828',
-    localWeaponFile: 'lastWeaponStats.json'
+    userName: 'elegyy',
+    localWeaponFile: 'lastWeaponStats.json',
+    localSoldierFile: 'lastSoldierStat.json'
 }

@@ -3,7 +3,17 @@ var battlelog = require('./battlelog');
 var locallog = require('./locallog');
 
 var lastWeaponStats = locallog.loadObject(config.localWeaponFile);
+battlelog.getSoldierStats(getSoldierCallback);
 battlelog.getWeaponStats(getWeaponsCallback);
+
+function getSoldierCallback(soldierStats) {
+    for(var propName in soldierStats) {
+        if(soldierStats.hasOwnProperty(propName)) {
+            var propValue = soldierStats[propName];
+            console.log(propName + ': ' + propValue);
+        }
+    }
+}
 
 function getWeaponsCallback(weaponStats) {
     var differences = checkWeaponStatsDifferences(weaponStats, lastWeaponStats)
@@ -13,8 +23,8 @@ function getWeaponsCallback(weaponStats) {
         console.log(element.slug);
         if (element.serviceStars) console.log('Service stars: ' + element.serviceStars);
         if (element.kills) console.log('Kills: ' + element.kills);
-        if (element.headshots) console.log('Headshots: ' + headshots.serviceStars);
-        if (element.accuracy) console.log('Accuracy: ' + accuracy.serviceStars);
+        if (element.headshots) console.log('Headshots: ' + element.headshots);
+        if (element.accuracy) console.log('Accuracy: ' + element.accuracy);
         if (element.timeEquipped) console.log('timeEquipped: ' + element.timeEquipped);
     }, this);
 }
