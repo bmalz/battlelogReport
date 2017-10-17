@@ -3,8 +3,12 @@ var battlelog = require('./battlelog');
 var locallog = require('./locallog');
 
 var lastWeaponStats = locallog.loadObject(config.localWeaponFile);
-battlelog.getSoldierStats(getSoldierCallback);
-battlelog.getWeaponStats(getWeaponsCallback);
+battlelog.getSoldier(start);
+
+function start() {
+    battlelog.getSoldierStats(getSoldierCallback);
+    battlelog.getWeaponStats(getWeaponsCallback);
+}
 
 function getSoldierCallback(soldierStats) {
     for(var propName in soldierStats) {
